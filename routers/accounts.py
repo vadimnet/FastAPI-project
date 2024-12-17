@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Body
 from typing import Annotated
 from models import CreateAccount
 
@@ -24,4 +24,8 @@ async def change_account(id: int, account:CreateAccount): #сделать отд
 
 @router.get("account")
 async def account(id: Annotated[int, Query()]):
+    pass
+
+@router.put("account")
+async def change_account(account: Annotated[CreateAccount, Body()]):
     pass

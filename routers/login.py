@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
+from typing import Annotated
 
 router = APIRouter(
     prefix="/api/v1.0/"
@@ -8,8 +9,10 @@ router = APIRouter(
 async def login():
     pass
 
-@router.put("sign-up")
-async def sign_up():
+@router.put("register")
+async def register():
     pass
 
-
+@router.put("logout")
+async def logout():
+    pass

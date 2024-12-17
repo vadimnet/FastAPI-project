@@ -21,3 +21,7 @@ async def create_account(account: CreateAccount): #попробовать сде
 @router.put("accounts/{id}")
 async def change_account(id: int, account:CreateAccount): #сделать отдельную pydantic модель?(или просто сделать текущую универсальной)
     pass
+
+@router.get("account")
+async def account(id: Annotated[int, Query()]):
+    pass

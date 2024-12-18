@@ -3,13 +3,13 @@ from models.Role import Role
 from datetime import date, datetime
 
 class AdminCreateAccountDTO(BaseModel):
-    login: str = Field(default=..., min_length=3, max_length=50)
-    password: str = Field(default=..., min_length=6, max_length=50)
-    password_confirmation: str = Field(default=..., min_length=6, max_length=50)
-    firstname: str = Field(default=..., min_length=1, max_length=50)
-    lastname: str = Field(default=..., min_length=1, max_length=50)
+    login: str = Field(default=..., min_length=3, max_length=50, description='Логин для аккаунта. Минимальная длина-3, максимальная-50')
+    password: str = Field(default=..., min_length=6, max_length=50, description='Пароль для аккаунта. Минимальная длина-6, максимальная-50')
+    password_confirmation: str = Field(default=..., min_length=6, max_length=50, description='Подтверждение пароля. Минимальна длина как для пароля')
+    firstname: str = Field(default=..., min_length=1, max_length=50, description='Имя пользователя. Минимальная длина-1, максимальная-50')
+    lastname: str = Field(default=..., min_length=1, max_length=50, description='Фамилия пользователя. Минимальная длина-1, максимальная-50')
     date_b: date = Field(description='Дата рождения в формате ГГГГ-ММ-ДД, необязательно для указания')
-    role: Role = Field(default=..., description='Роль пользователя в системе')
+    role: Role = Field(default=..., description='Роль пользователя в системе. Разрешенные значения: user|admin')
 
     @field_validator("password")
     @classmethod

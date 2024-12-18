@@ -1,13 +1,13 @@
 from pydantic import BaseModel, Field, field_validator, ValidationError
-from datetime import date
+from datetime import date, datetime
 
 class UpdateAccountDTO(BaseModel):
-    login: str = Field(min_length=3, max_length=50)
-    password: str = Field(min_length=6, max_length=50)
-    password_confirmation: str = Field(min_length=6, max_length=50)
-    firstname: str = Field(min_length=1, max_length=50)
-    lastname: str = Field(min_length=1, max_length=50)
-    date_b: date = Field(description='Дата рождения в формате ГГГГ-ММ-ДД')
+    login: str = Field(min_length=3, max_length=50, description='Логин для аккаунта. Минимальная длина-3, максимальная-50')
+    password: str = Field(min_length=6, max_length=50, description='Пароль для аккаунта. Минимальная длина-6, максимальная-50')
+    password_confirmation: str = Field(min_length=6, max_length=50, description='Подтверждение пароля. Минимальная и максимальная длина как для пароля')
+    firstname: str = Field(min_length=1, max_length=50, description='Имя пользователя. Минимальная длина-1, максимальная-50')
+    lastname: str = Field(min_length=1, max_length=50, description='Фамилия пользователя. Минимальная длина-1, максимальная-50')
+    date_b: date = Field(description='Дата рождения в формате ГГГГ-ММ-ДД, необязательно для указания')
 
     @field_validator("password")
     @classmethod

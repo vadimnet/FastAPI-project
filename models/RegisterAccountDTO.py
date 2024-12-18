@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, field_validator, ValidationError
-from datetime import date
+from datetime import date, datetime
 
 
 class CreateAccountDTO(BaseModel):

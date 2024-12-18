@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Query, Body
+from fastapi import APIRouter, Query, Body, Path
 from typing import Annotated
-from models import CreateAccount
+from models import AdminCreateAccountDTO
+from models.UpdateAccountDTO import UpdateAccountDTO
+from models.AdminUpdateAccountDTO import AdminUpdateAccountDTO
 
 router = APIRouter(
     prefix="/api/v1.0/"
@@ -14,18 +16,18 @@ async def accounts():
 async def delete_account(id: Annotated[int, Query(gt=0)]):
     pass
 
-@router.put("accounts")
-async def create_account(account: CreateAccount): #попробовать сделать через Annotated
+@router.post("accounts")
+async def create_account(account: Annotated[AdminCreateAccountDTO, Body()]): #попробовать сделать через Annotated
     pass
 
 @router.put("accounts/{id}")
-async def change_account(id: int, account:CreateAccount): #сделать отдельную pydantic модель?(или просто сделать текущую универсальной)
+async def change_account(id: int, account: Annotated[UpdateAccountDTO|AdminUpdateAccountDTO, Body()]):
     pass
 
-@router.get("account")
-async def account(id: Annotated[int, Query()]):
+@router.get("account/{id}")
+async def get_account(id: Annotated[int, Path()]):
     pass
 
 @router.put("account")
-async def change_account(account: Annotated[CreateAccount, Body()]):
+async def change_account(account: Annotated[UpdateAccountDTO|AdminUpdateAccountDTO, Body()]):
     pass

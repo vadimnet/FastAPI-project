@@ -5,14 +5,14 @@ router = APIRouter(
     prefix="/api/v1.0/"
 )
 
-@router.put("login")
+@router.post("login")
 async def login():
     pass
 
-@router.put("register")
+@router.post("register")
 async def register():
     pass
 
-@router.put("logout")
+@router.post("logout")
 async def logout():
     pass
